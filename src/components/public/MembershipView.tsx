@@ -122,7 +122,7 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
       </div>
 
       {/* Pricing Cards Grid (Role Model Image 2) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
         {membershipPlans.map(plan => {
           const cfg = tierConfig[plan.id] || {
             title: plan.name,
