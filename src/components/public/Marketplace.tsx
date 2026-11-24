@@ -93,7 +93,7 @@ export const Marketplace: React.FC<MarketplaceProps> = ({ onOpenDealRoom, openAu
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 space-y-6">
       {/* Header */}
       <div>
         <div className="flex items-center gap-2 mb-1">
@@ -201,11 +201,11 @@ export const Marketplace: React.FC<MarketplaceProps> = ({ onOpenDealRoom, openAu
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProducts.map(prod => (
           <div
             key={prod.id}
-            className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between"
+            className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 transition-colors flex flex-col justify-between"
           >
             {/* Image banner with styled fallback */}
             <div className="relative aspect-4/3 bg-slate-100 overflow-hidden group">
