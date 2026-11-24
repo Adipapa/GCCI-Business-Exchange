@@ -92,7 +92,7 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
       ],
       isPopular: true,
       btnStyle: 'bg-white hover:bg-slate-100 text-slate-950',
-      cardStyle: 'bg-[#523707] text-white border-[#664509] shadow-xl'
+      cardStyle: 'bg-[#0B2E65] text-white border-[#2C5390] shadow-xl'
     },
     'plan-corporate': {
       title: 'Premium',
@@ -141,7 +141,7 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
             >
               {/* MOST POPULAR BADGE */}
               {cfg.isPopular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#2e1d02] border border-amber-500/40 text-amber-300 text-[10px] font-extrabold rounded-full uppercase tracking-widest shadow-md">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#071B3A] border border-amber-500/40 text-amber-300 text-[10px] font-extrabold rounded-full uppercase tracking-widest shadow-md">
                   Most Popular
                 </div>
               )}
