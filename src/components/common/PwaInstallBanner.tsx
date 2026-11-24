@@ -1,99 +1,82 @@
 import React, { useState, useEffect } from 'react';
 import { GcciLogo } from './GcciLogo';
-import { Download, X, Check } from 'lucide-react';
+import { Download, X } from 'lucide-react';
+
+interface InstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
+}
 
 export const PwaInstallBanner: React.FC = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [visible, setVisible] = useState(true);
-  const [installed, setInstalled] = useState(false);
-  const [infoMessage, setInfoMessage] = useState<string | null>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<InstallPromptEvent | null>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem('gcci_pwa_banner_dismissed') === 'true') {
-      setVisible(false);
-    }
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+      || (navigator as Navigator & { standalone?: boolean }).standalone === true;
+    if (isStandalone || sessionStorage.getItem('gcci_pwa_banner_dismissed') === 'true') return;
 
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+      setDeferredPrompt(event as InstallPromptEvent);
       setVisible(true);
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    window.addEventListener('appinstalled', () => {
-      setInstalled(true);
+    const handleAppInstalled = () => {
       setVisible(false);
-    });
+      setDeferredPrompt(null);
+      sessionStorage.setItem('gcci_pwa_banner_dismissed', 'true');
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
     };
   }, []);
 
   const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        setVisible(false);
-      }
-      setDeferredPrompt(null);
-    } else {
-      setInfoMessage('Use browser menu (⋮ or Share) and choose "Add to Home screen" to install.');
-      setTimeout(() => setInfoMessage(null), 4000);
+    if (!deferredPrompt) return;
+    await deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setVisible(false);
+      sessionStorage.setItem('gcci_pwa_banner_dismissed', 'true');
     }
+    setDeferredPrompt(null);
   };
 
   const handleDismiss = () => {
     setVisible(false);
+    setDeferredPrompt(null);
     sessionStorage.setItem('gcci_pwa_banner_dismissed', 'true');
   };
 
-  if (!visible || installed) return null;
+  if (!visible || !deferredPrompt) return null;
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-md animate-in fade-in slide-in-from-bottom-4 duration-300">
-      <div className="bg-white/95 backdrop-blur-md border border-amber-900/15 rounded-2xl shadow-xl p-3 sm:p-3.5 flex flex-col gap-2 text-slate-900">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-center shrink-0 p-1">
-              <GcciLogo variant="mark" className="w-7 h-7" />
-            </div>
-            <div className="min-w-0">
-              <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight truncate">
-                Install the GCCI app
-              </h4>
-              <p className="text-[11px] text-slate-500 leading-tight truncate">
-                A faster, full-screen experience.
-              </p>
-            </div>
+    <div className="fixed bottom-4 left-1/2 z-50 w-[95%] max-w-md -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4 duration-300">
+      <div className="flex items-center justify-between gap-3 rounded-2xl border border-blue-100 bg-white/95 p-3 text-slate-900 shadow-xl backdrop-blur-md sm:p-3.5">
+        <div className="flex min-w-0 items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-100 bg-blue-50 p-1">
+            <GcciLogo variant="mark" className="h-7 w-7" />
           </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <button
-              onClick={handleInstallClick}
-              className="px-4 py-1.5 bg-[#0B42A0] hover:bg-[#002E7A] text-white text-xs font-bold rounded-full shadow-sm flex items-center gap-1.5 transition-all hover:scale-102"
-            >
-              <Download className="w-3.5 h-3.5 text-amber-300" />
-              <span>Install</span>
-            </button>
-            <button
-              onClick={handleDismiss}
-              className="p-1.5 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100 transition-colors"
-              title="Dismiss"
-            >
-              <X className="w-4 h-4" />
-            </button>
+          <div className="min-w-0">
+            <h4 className="truncate text-xs font-bold leading-tight text-slate-900 sm:text-sm">Install the GCCI app</h4>
+            <p className="truncate text-[11px] leading-tight text-slate-500">A faster, full-screen experience.</p>
           </div>
         </div>
-
-        {infoMessage && (
-          <div className="text-[11px] text-amber-900 bg-amber-50 p-2 rounded-lg border border-amber-200 flex items-center gap-1.5">
-            <Check className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-            <span>{infoMessage}</span>
-          </div>
-        )}
+        <div className="flex shrink-0 items-center gap-2">
+          <button onClick={handleInstallClick} className="flex items-center gap-1.5 rounded-full bg-[#0B42A0] px-4 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#002E7A]">
+            <Download className="h-3.5 w-3.5" />
+            Install
+          </button>
+          <button onClick={handleDismiss} className="rounded-full p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700" aria-label="Dismiss install prompt">
+            <X className="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </div>
   );
