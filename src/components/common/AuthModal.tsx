@@ -37,38 +37,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, initialMo
       return;
     }
 
-    // Check if matches demo user
-    const matched = DEMO_USERS.find(u => u.email.toLowerCase() === email.toLowerCase());
-    if (matched) {
-      setCurrentUser(matched);
-      onClose();
-      if (onSuccessRedirect) {
-        if (matched.role === 'business_owner') onSuccessRedirect('business_portal');
-        else if (matched.role === 'buyer') onSuccessRedirect('buyer_portal');
-        else if (matched.role === 'investor') onSuccessRedirect('investor_portal');
-        else onSuccessRedirect('admin_portal');
-      }
+    if (!import.meta.env.DEV) {
+      setError('Live sign-in is not connected yet. No account session has been created. Please contact GCCI for account access.');
       return;
     }
-
-    // Or create user session from entered credentials
-    const newSession = {
-      id: `user-${Date.now()}`,
-      email,
-      fullName: email.split('@')[0].replace('.', ' '),
-      role: 'business_owner' as UserRole,
-      organization: 'Registered Enterprise',
-      phone: '+220 700 0000'
-    };
-    setCurrentUser(newSession);
-    onClose();
-    if (onSuccessRedirect) onSuccessRedirect('business_portal');
+    setError('This is a demo environment. Use one of the development demo profiles below; email and password sign-in is not enabled.');
   };
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
+    if (!import.meta.env.DEV) {
+      setError('Online registration is not connected yet. Your details have not been submitted or stored. Please contact GCCI to register.');
+      return;
+    }
     if (!fullName || !email || !password) {
       setError('Please fill in your full name, email, and password.');
       return;
@@ -155,11 +138,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, initialMo
           </div>
         )}
 
-        {/* Demo Fast Logins for Testing */}
-        <div className="mb-6 p-3 bg-slate-50 rounded-xl border border-slate-200">
+        {/* Development-only demo shortcuts */}
+        {import.meta.env.DEV && <div className="mb-6 p-3 bg-blue-50 rounded-xl border border-blue-200">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
-              1-Click Demo Profiles (Evaluate Roles)
+              Development demo profiles
             </span>
             <span className="text-[10px] text-[#0B42A0] font-bold">Instant Access</span>
           </div>
@@ -197,7 +180,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, initialMo
               <p className="text-[10px] text-slate-500">GCCI Administrator</p>
             </button>
           </div>
-        </div>
+        </div>}
+
+        {!import.meta.env.DEV && (
+          <div className="mb-5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-950">
+            <strong>Account services are not connected.</strong> This preview cannot securely sign in, create accounts or send password recovery emails. No credentials will be accepted or stored.
+          </div>
+        )}
 
         {/* Sign In Form */}
         {mode === 'signin' && (
@@ -430,8 +419,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, initialMo
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  if (email) setResetSent(true);
-                  else setError('Please enter your registered email address.');
+                  setResetSent(false);
+                  setError(import.meta.env.DEV
+                    ? 'Password recovery is not connected in this demo.'
+                    : 'Password recovery is not connected yet. No email has been sent. Please contact GCCI.');
                 }}
                 className="space-y-3"
               >
