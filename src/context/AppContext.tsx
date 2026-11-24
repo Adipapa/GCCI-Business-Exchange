@@ -137,10 +137,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Load state from localStorage or seed
   const [currentUser, setCurrentUserState] = useState<UserSession>(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEYS.USER);
-      return saved ? JSON.parse(saved) : DEMO_USERS[0]; // Default to Modou Faye (Business Owner)
+      const saved = import.meta.env.DEV ? localStorage.getItem(STORAGE_KEYS.USER) : null;
+      return saved ? JSON.parse(saved) : DEMO_USERS[5];
     } catch {
-      return DEMO_USERS[0];
+      return DEMO_USERS[5];
     }
   });
 
@@ -358,8 +358,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [adminStaff]);
 
   const setCurrentUser = (user: UserSession) => {
+    if (!import.meta.env.DEV) return;
     setCurrentUserState(user);
-    logAuditEvent('USER_ROLE_SWITCH', 'User', user.id, `Switched active session to ${user.fullName} (${user.role})`);
+    logAuditEvent('USER_ROLE_SWITCH', 'User', user.id, `Switched active demo session to ${user.fullName} (${user.role})`);
   };
 
   const logAuditEvent = (action: string, targetType: string, targetId: string, details: string) => {
@@ -1008,7 +1009,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const resetToDemoSeed = () => {
-    localStorage.clear();
+    if (!import.meta.env.DEV) return;
+    Object.values(STORAGE_KEYS).forEach(key => localStorage.removeItem(key));
     setBusinesses(INITIAL_BUSINESSES);
     setProducts(INITIAL_PRODUCTS);
     setOpportunities(INITIAL_OPPORTUNITIES);
@@ -1019,7 +1021,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCategories(INITIAL_CATEGORIES);
     setPayments(INITIAL_PAYMENTS);
     setAuditLogs(INITIAL_AUDIT_LOGS);
-    setCurrentUser(DEMO_USERS[0]);
+    setCurrentUserState(DEMO_USERS[0]);
   };
 
   return (
