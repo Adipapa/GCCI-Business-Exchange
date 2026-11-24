@@ -41,9 +41,9 @@ export const AboutPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="gcci-public-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       {/* Hero Section with Official GCCI Logo and Theme Colors */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-xl border border-slate-200">
+      <div className="gcci-about-heading grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-xl border border-slate-200">
         <div className="lg:col-span-8 space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-[#0B42A0] border border-blue-200 rounded-full text-xs font-semibold">
             <ShieldCheck className="w-4 h-4 text-[#0B42A0]" />
