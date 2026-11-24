@@ -366,3 +366,47 @@
 @media (prefers-reduced-motion: reduce) {
   .gcci-modal-panel { animation: none !important; }
 }
+
+
+.gcci-page-heading > div:first-child span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 9999px;
+  padding: 0.38rem 0.72rem;
+  background: #eaf2ff;
+  color: #0b42a0;
+  font-size: 0.67rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.gcci-portal-heading h1 {
+  color: #101d35;
+  letter-spacing: -0.035em;
+}
+
+.gcci-portal-heading p {
+  line-height: 1.65;
+}
+
+.gcci-about-heading {
+  background: linear-gradient(112deg, #ffffff 0%, #f7faff 100%);
+}
+
+.gcci-public-page input:not([type="checkbox"]):not([type="radio"]),
+.gcci-public-page select {
+  min-height: 2.65rem;
+  border-radius: 0.7rem;
+}
+
+.gcci-public-page div[class*="bg-white"][class*="border-slate-200"][class*="rounded-xl"],
+.gcci-portal-page div[class*="bg-white"][class*="border-slate-200"][class*="rounded-xl"],
+.gcci-portal-page div[class*="bg-white"][class*="border-slate-200"][class*="rounded-lg"] {
+  box-shadow: 0 12px 28px -29px rgba(15, 35, 70, 0.62);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
