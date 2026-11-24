@@ -1,132 +1,78 @@
 import React from 'react';
 import { GcciLogo } from './GcciLogo';
-import { ShieldCheck, Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { ShieldCheck, Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-slate-950 text-slate-400 text-sm border-t border-slate-900 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-          {/* Col 1 & 2: GCCI Institution overview */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white p-2.5 rounded-xl inline-block shadow-sm">
+    <footer className="gcci-footer border-t border-slate-800 bg-[#071B3A] text-slate-300">
+      <div className="mx-auto max-w-7xl px-4 pb-8 pt-12 sm:px-6 lg:px-8 lg:pt-14">
+        <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-16">
+          <div className="max-w-md">
+            <div className="inline-flex rounded-xl bg-white p-2.5 shadow-sm">
               <GcciLogo size="md" />
             </div>
-            <div>
-              <h3 className="text-white font-bold text-base tracking-tight">Gambia Chamber of Commerce and Industry</h3>
-              <p className="text-xs text-amber-400 font-medium">The Voice of Gambian Business & Trade</p>
-            </div>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Established in 1978, GCCI is the national private sector organization facilitating domestic and cross-border trade, business verification, investment facilitation, and economic cooperation across The Gambia and the ECOWAS region.
+            <h2 className="mt-5 text-lg font-bold tracking-tight text-white">Gambia Chamber of Commerce and Industry</h2>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-amber-300">The voice of Gambian business and trade</p>
+            <p className="mt-4 text-sm leading-6 text-slate-400">
+              Established in 1978, GCCI supports enterprise, domestic and cross-border trade, investment and economic cooperation across The Gambia and the ECOWAS region.
             </p>
-            <div className="pt-2 text-xs space-y-1.5 text-slate-400">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
+            <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-xs font-medium text-emerald-200">
+              <ShieldCheck className="h-4 w-4" />
+              Trusted business network
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white">Explore the exchange</h3>
+            <div className="mt-5 grid grid-cols-1 gap-3 text-sm">
+              {[
+                ['Business directory', 'directory'],
+                ['Marketplace', 'marketplace'],
+                ['Trade opportunities', 'opportunities'],
+                ['Membership', 'membership'],
+                ['About GCCI', 'about']
+              ].map(([label, tab]) => (
+                <button key={tab} onClick={() => setActiveTab(tab)} className="group flex w-fit items-center gap-2 text-left text-slate-400 transition hover:text-white">
+                  <span>{label}</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white">Contact GCCI</h3>
+            <div className="mt-5 space-y-4 text-sm text-slate-400">
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-blue-300" />
                 <span>Kerr Jula, Bertil Harding Highway, Bijilo / Kanifing, The Gambia</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-blue-400 shrink-0" />
+              <a href="tel:+2204463450" className="flex items-center gap-3 transition hover:text-white">
+                <Phone className="h-4 w-4 shrink-0 text-blue-300" />
                 <span>+220 446 3450 / +220 437 8810</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+              </a>
+              <a href="mailto:info@gcci.gm" className="flex items-center gap-3 transition hover:text-white">
+                <Mail className="h-4 w-4 shrink-0 text-blue-300" />
                 <span>info@gcci.gm / exchange@gcci.gm</span>
-              </div>
+              </a>
             </div>
-          </div>
-
-          {/* Col 3: Exchange Workflows */}
-          <div>
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Trade Exchange</h4>
-            <ul className="space-y-2.5 text-xs">
-              <li>
-                <button onClick={() => setActiveTab('directory')} className="hover:text-white transition-colors">
-                  Verified Business Directory
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('marketplace')} className="hover:text-white transition-colors">
-                  Product & Service Catalog
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('opportunities')} className="hover:text-white transition-colors">
-                  Sourcing Tenders & RFQs
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('membership')} className="hover:text-white transition-colors">
-                  Membership & Gold Verification
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('about')} className="hover:text-white transition-colors">
-                  Statutory Compliance Criteria
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Key Sectors in The Gambia */}
-          <div>
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Sectors & Trade</h4>
-            <ul className="space-y-2.5 text-xs">
-              <li>
-                <span className="text-slate-300">Agribusiness & Cashew Export</span>
-              </li>
-              <li>
-                <span className="text-slate-300">Port of Banjul & Freight Transit</span>
-              </li>
-              <li>
-                <span className="text-slate-300">Solar Energy & Mini-Grids</span>
-              </li>
-              <li>
-                <span className="text-slate-300">Civil Infrastructure & Construction</span>
-              </li>
-              <li>
-                <span className="text-slate-300">Fintech, QMoney & Mobile Banking</span>
-              </li>
-              <li>
-                <span className="text-slate-300">ECOWAS & AfCFTA Trade Corridors</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 5: Security & Technical Development */}
-          <div>
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Platform Governance</h4>
-            <div className="space-y-3 text-xs">
-              <div className="p-3 bg-slate-900 rounded-lg border border-slate-800">
-                <div className="flex items-center gap-1.5 text-emerald-400 font-semibold mb-1">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Audited GCCI Verification</span>
-                </div>
-                <p className="text-[11px] text-slate-400 leading-normal">
-                  All Gold badges verified with GRA Tax Clearance and Ministry of Justice commercial registration.
-                </p>
-              </div>
-              <div className="text-[11px] text-slate-500">
-                <span>Developed in partnership with </span>
-                <span className="text-slate-300 font-medium">Quality Tech Services (QTS)</span>
-                <span> for the Gambia Chamber of Commerce and Industry.</span>
-              </div>
+            <div className="mt-6 border-t border-white/10 pt-5 text-xs leading-5 text-slate-500">
+              Digital exchange developed in partnership with <span className="font-semibold text-slate-300">Quality Tech Services (QTS)</span>.
             </div>
           </div>
         </div>
 
-        {/* Bottom copyright and legal notices */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2026 Gambia Chamber of Commerce and Industry (GCCI). All rights reserved.</p>
-          <div className="flex items-center gap-6 text-xs">
-            <button onClick={() => setActiveTab('about')} className="hover:text-slate-400">Privacy Policy</button>
-            <span aria-hidden="true">·</span>
-            <button onClick={() => setActiveTab('about')} className="hover:text-slate-400">Terms of Commercial Exchange</button>
-            <span aria-hidden="true">·</span>
-            <button onClick={() => setActiveTab('about')} className="hover:text-slate-400">Arbitration & Dispute Resolution</button>
+        <div className="flex flex-col items-start justify-between gap-3 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center">
+          <p>© {year} Gambia Chamber of Commerce and Industry. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <button onClick={() => setActiveTab('about')} className="transition hover:text-slate-300">Privacy & terms</button>
+            <button onClick={() => setActiveTab('about')} className="transition hover:text-slate-300">Commercial exchange rules</button>
           </div>
         </div>
       </div>
