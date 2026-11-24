@@ -110,9 +110,9 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="gcci-public-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Header (Role Model Image 2) */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
+      <div className="gcci-membership-heading text-center max-w-3xl mx-auto space-y-3">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
           Choose the tier that fits your ambition
         </h1>
