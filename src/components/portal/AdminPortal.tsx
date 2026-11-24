@@ -419,13 +419,17 @@ export const AdminPortal: React.FC = () => {
             <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
             <span>Export Ledgers</span>
           </button>
-          <button
-            onClick={resetToDemoSeed}
-            className="px-3 py-1.5 bg-rose-950/60 hover:bg-rose-900 text-rose-300 text-xs font-medium rounded-lg border border-rose-800"
-            title="Reset to clean baseline database"
-          >
-            Reset Seed Data
-          </button>
+          {import.meta.env.DEV && (
+            <button
+              onClick={() => {
+                if (window.confirm('Reset this local demo to its sample data? This only affects this browser.')) resetToDemoSeed();
+              }}
+              className="px-3 py-1.5 bg-rose-950/60 hover:bg-rose-900 text-rose-300 text-xs font-medium rounded-lg border border-rose-800"
+              title="Reset local development demo data"
+            >
+              Reset Demo Data
+            </button>
+          )}
         </div>
       </div>
 
