@@ -103,15 +103,15 @@ export const Hero: React.FC<HeroProps> = ({ setActiveTab, openAuthModal, onSearc
 
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 py-7 sm:grid-cols-3 sm:px-6">
-          <div>
+          <div className="gcci-home-stat">
             <p className="text-2xl font-semibold tracking-tight text-slate-950">{businesses.length.toLocaleString()}</p>
             <p className="mt-1 text-sm text-slate-500">Businesses listed</p>
           </div>
-          <div>
+          <div className="gcci-home-stat">
             <p className="text-2xl font-semibold tracking-tight text-slate-950">{verifiedBusinesses.toLocaleString()}</p>
             <p className="mt-1 text-sm text-slate-500">Verified businesses</p>
           </div>
-          <div>
+          <div className="gcci-home-stat">
             <p className="text-2xl font-semibold tracking-tight text-slate-950">{activeOpportunities.toLocaleString()}</p>
             <p className="mt-1 text-sm text-slate-500">Open opportunities</p>
           </div>
