@@ -148,7 +148,7 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
+    <div className="gcci-app min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
       {/* Navbar with Gambia Chamber branding, single-line links, and Share Link button */}
       <Navbar
         activeTab={activeTab}
@@ -158,7 +158,7 @@ function MainApp() {
       />
 
       {/* Main Content Viewport */}
-      <main className="flex-1">
+      <main className="gcci-main flex-1">
         {activeTab === 'home' && (
           <Hero
             setActiveTab={setActiveTab}
