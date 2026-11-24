@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { DEMO_USERS } from '../../data/seedData';
+
+const isDemoMode = import.meta.env.DEV;
 import { GcciLogo } from './GcciLogo';
 
 interface NavbarProps {
@@ -114,22 +116,22 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openAut
               </button>
               <div className="relative">
                 <button
-                  onClick={() => setAccountMenuOpen(value => !value)}
-                  aria-expanded={accountMenuOpen}
+                  onClick={() => isDemoMode ? setAccountMenuOpen(value => !value) : navigate(portalTab())}
+                  aria-expanded={isDemoMode ? accountMenuOpen : undefined}
                   className="inline-flex max-w-48 items-center gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
                 >
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-[#0B42A0]">
                     {currentUser.fullName.split(' ').map(part => part[0]).join('').slice(0, 2).toUpperCase()}
                   </span>
                   <span className="max-w-28 truncate">{currentUser.fullName}</span>
-                  <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${accountMenuOpen ? 'rotate-180' : ''}`} />
+                  {isDemoMode && <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${accountMenuOpen ? 'rotate-180' : ''}`} />}
                 </button>
-                {accountMenuOpen && (
+                {accountMenuOpen && isDemoMode && (
                   <div className="absolute right-0 mt-2 w-72 rounded-xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-900/10">
                     <div className="border-b border-slate-100 px-3 pb-2 pt-1">
                       <p className="text-xs font-semibold text-slate-900">{currentUser.fullName}</p>
                       <p className="mt-0.5 text-[11px] capitalize text-slate-500">{currentUser.role.replaceAll('_', ' ')}</p>
-                      <p className="mt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">Switch demo account</p>
+                      <p className="mt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">Development demo account switcher</p>
                     </div>
                     <div className="mt-1 max-h-72 space-y-0.5 overflow-y-auto">
                       {DEMO_USERS.map(user => (
