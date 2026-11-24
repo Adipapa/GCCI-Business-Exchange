@@ -1,0 +1,31 @@
+<svg width="260" height="76" viewBox="0 0 260 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gcciGearGradFile" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="40%" stop-color="#CBD5E1" />
+      <stop offset="70%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(38, 38)">
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(36)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(72)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(108)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(144)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(180)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(216)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(252)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(288)" />
+    <rect x="-6.5" y="-36" width="13" height="11" rx="1.5" fill="url(#gcciGearGradFile)" stroke="#64748B" stroke-width="0.75" transform="rotate(324)" />
+    <circle r="30" fill="url(#gcciGearGradFile)" stroke="#475569" stroke-width="1" />
+    <circle r="21" fill="#FFFFFF" />
+    <path d="M -16.5 0 A 16.5 16.5 0 0 1 16.5 0 Z" fill="#005A36" />
+    <path d="M -16.5 0 A 16.5 16.5 0 0 0 16.5 0 L 10.5 0 A 10.5 10.5 0 0 1 -10.5 0 Z" fill="#F59E0B" stroke="#B45309" stroke-width="0.75" />
+    <line x1="0" y1="0" x2="0" y2="16.5" stroke="#334155" stroke-width="1.5" />
+  </g>
+  <line x1="2" y1="38" x2="74" y2="38" stroke="#FFFFFF" stroke-width="1.5" />
+  <text x="76" y="35" fill="#0B42A0" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="34" letter-spacing="-0.5px">GCCI</text>
+  <rect x="0" y="42" width="260" height="18" rx="1" fill="#0B42A0" />
+  <text x="154" y="54.5" fill="#FFFFFF" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="8.5" letter-spacing="0.2px" text-anchor="middle">Gambia Chamber of Commerce and Industry</text>
+</svg>
