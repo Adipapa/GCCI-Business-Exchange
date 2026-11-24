@@ -175,6 +175,12 @@ function MainApp() {
         onOpenShare={() => setShareModalOpen(true)}
       />
 
+      {!import.meta.env.DEV && (
+        <aside role="status" aria-live="polite" className="border-b border-amber-200 bg-amber-50 px-4 py-2.5 text-center text-xs leading-5 text-amber-950 sm:text-sm">
+          <strong>Platform preview:</strong> directory, marketplace and opportunity records are demonstration content. Live account, submission and shared-data services are not connected.
+        </aside>
+      )}
+
       {/* Main Content Viewport */}
       <main className="gcci-main flex-1">
         {activeTab === 'home' && (
