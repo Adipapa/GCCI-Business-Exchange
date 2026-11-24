@@ -109,7 +109,7 @@ export const OpportunitiesList: React.FC<OpportunitiesListProps> = ({ onOpenDeal
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 space-y-6">
       {/* Header */}
       <div>
         <div className="flex items-center gap-2 mb-1">
@@ -180,7 +180,7 @@ export const OpportunitiesList: React.FC<OpportunitiesListProps> = ({ onOpenDeal
           return (
             <div
               key={opp.id}
-              className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs hover:border-slate-300 hover:shadow-md transition-all space-y-4"
+              className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs hover:border-slate-300 transition-colors space-y-4"
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="space-y-1.5 flex-1">
@@ -327,7 +327,7 @@ export const OpportunitiesList: React.FC<OpportunitiesListProps> = ({ onOpenDeal
               )}
 
               {/* Submission Form */}
-              <div className="p-6 bg-slate-900 rounded-xl text-white space-y-4">
+              <div className="p-5 bg-slate-900 rounded-xl text-white space-y-4">
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-sm text-emerald-400">
                     Submit Formal Supplier Response / Quotation
