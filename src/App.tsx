@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { ShieldCheck } from 'lucide-react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
@@ -33,6 +34,23 @@ const VALID_TABS = [
   'investor_portal', 
   'admin_portal'
 ];
+
+const WorkspaceUnavailable: React.FC<{ onReturnHome: () => void }> = ({ onReturnHome }) => (
+  <section className="mx-auto flex min-h-[55vh] max-w-3xl items-center justify-center px-4 py-16">
+    <div className="w-full rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm sm:p-12">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-[#0B42A0]">
+        <ShieldCheck className="h-7 w-7" />
+      </div>
+      <h1 className="mt-5 text-2xl font-bold tracking-tight text-slate-950">Workspace access is not available yet</h1>
+      <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-600">
+        This public preview does not yet have a connected GCCI authentication service. Business, buyer, investor and administrator workspaces will become available once secure account access is enabled.
+      </p>
+      <button onClick={onReturnHome} className="mt-6 rounded-lg bg-[#0B42A0] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#002E7A]">
+        Return to the public exchange
+      </button>
+    </div>
+  </section>
+);
 
 function MainApp() {
   const { currentUser } = useApp();
@@ -218,25 +236,27 @@ function MainApp() {
         )}
 
         {activeTab === 'business_portal' && (
-          <BusinessPortal
-            setActiveTab={setActiveTab}
-          />
+          import.meta.env.DEV || currentUser.role !== 'visitor'
+            ? <BusinessPortal setActiveTab={setActiveTab} />
+            : <WorkspaceUnavailable onReturnHome={() => setActiveTab('home')} />
         )}
 
         {activeTab === 'buyer_portal' && (
-          <BuyerPortal
-            setActiveTab={setActiveTab}
-          />
+          import.meta.env.DEV || currentUser.role !== 'visitor'
+            ? <BuyerPortal setActiveTab={setActiveTab} />
+            : <WorkspaceUnavailable onReturnHome={() => setActiveTab('home')} />
         )}
 
         {activeTab === 'investor_portal' && (
-          <InvestorPortal
-            setActiveTab={setActiveTab}
-          />
+          import.meta.env.DEV || currentUser.role !== 'visitor'
+            ? <InvestorPortal setActiveTab={setActiveTab} />
+            : <WorkspaceUnavailable onReturnHome={() => setActiveTab('home')} />
         )}
 
         {activeTab === 'admin_portal' && (
-          <AdminPortal />
+          import.meta.env.DEV || currentUser.role === 'gcci_admin' || currentUser.role === 'super_admin' || currentUser.role === 'verification_officer'
+            ? <AdminPortal />
+            : <WorkspaceUnavailable onReturnHome={() => setActiveTab('home')} />
         )}
       </main>
 
