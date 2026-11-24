@@ -38,3 +38,40 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+
+/* Homepage hero motion — subtle and disabled for reduced-motion preferences. */
+@keyframes gcci-hero-enter {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes gcci-hero-photo-enter {
+  from { opacity: 0; transform: translate3d(24px, 0, 0) scale(0.985); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes gcci-hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-enter {
+  animation: gcci-hero-enter 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-photo-enter {
+  animation: gcci-hero-photo-enter 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms both;
+}
+
+.hero-float {
+  animation: gcci-hero-float 5s ease-in-out 1s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-photo-enter,
+  .hero-float {
+    animation: none !important;
+  }
+}
