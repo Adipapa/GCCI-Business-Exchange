@@ -383,9 +383,9 @@ export const AdminPortal: React.FC = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-5">
       {/* Top Banner / Secretariat Header */}
-      <div className="bg-slate-900 text-white p-6 rounded-2xl border border-slate-800 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-slate-900 text-white p-5 rounded-xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
@@ -441,7 +441,7 @@ export const AdminPortal: React.FC = () => {
       )}
 
       {/* Admin Navigation Tabs */}
-      <div className="flex border-b border-slate-200 bg-white rounded-xl px-2 text-xs font-medium text-slate-600 overflow-x-auto shadow-xs">
+      <div className="flex border-b border-slate-200 px-1 text-xs font-medium text-slate-600 overflow-x-auto">
         {[
           { id: 'overview', label: 'Dashboard & Metrics' },
           { id: 'due_diligence', label: `Due Diligence & Audit (${businesses.length})` },
@@ -469,8 +469,8 @@ export const AdminPortal: React.FC = () => {
       {activeTab === 'overview' && (
         <div className="space-y-6">
           {/* Key Metric Tiles */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-xs">
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
+            <div className="p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block font-medium">Registered Companies</span>
               <p className="text-2xl font-bold text-slate-900 font-mono-numbers mt-1">
                 {totalBusinesses}
@@ -480,7 +480,7 @@ export const AdminPortal: React.FC = () => {
               </span>
             </div>
 
-            <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-xs">
+            <div className="p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block font-medium">Verification Backlog</span>
               <p className="text-2xl font-bold text-amber-700 font-mono-numbers mt-1">
                 {pendingBusinesses.length}
@@ -493,7 +493,7 @@ export const AdminPortal: React.FC = () => {
               </button>
             </div>
 
-            <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-xs">
+            <div className="p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block font-medium">Commercial Trade Value</span>
               <p className="text-2xl font-bold text-emerald-800 font-mono-numbers mt-1">
                 D{(totalTradeValueGMD / 1000000).toFixed(1)}M
@@ -501,7 +501,7 @@ export const AdminPortal: React.FC = () => {
               <span className="text-[11px] text-slate-500 mt-1 block font-mono-numbers">GMD recorded agreements</span>
             </div>
 
-            <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-xs">
+            <div className="p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block font-medium">Subscription Revenue</span>
               <p className="text-2xl font-bold text-slate-900 font-mono-numbers mt-1">
                 D{totalSubscriptionRevenueGMD.toLocaleString()}
