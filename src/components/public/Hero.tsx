@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import heroBanjulTradeHub from '../../assets/images/hero_banjul_trade_hub_1792068736812.jpg';
 
 interface HeroProps {
   setActiveTab: (tab: string) => void;
@@ -79,8 +80,8 @@ export const Hero: React.FC<HeroProps> = ({ setActiveTab, openAuthModal, onSearc
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan-400/20 to-blue-700/10 blur-2xl" />
             <div className="relative overflow-hidden rounded-[1.75rem] border border-white/20 bg-blue-950 shadow-2xl shadow-black/40">
               <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1500&q=85"
-                alt="Business professionals collaborating around a table"
+                src={heroBanjulTradeHub}
+                alt="Banjul trade hub representing Gambian commerce and regional trade"
                 className="h-[340px] w-full object-cover sm:h-[430px] lg:h-[490px]"
                 fetchPriority="high"
               />
