@@ -41,9 +41,9 @@ export const AboutPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="gcci-public-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       {/* Hero Section with Official GCCI Logo and Theme Colors */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-2xl border border-slate-200 shadow-xs">
+      <div className="gcci-about-heading grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 rounded-xl border border-slate-200">
         <div className="lg:col-span-8 space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-[#0B42A0] border border-blue-200 rounded-full text-xs font-semibold">
             <ShieldCheck className="w-4 h-4 text-[#0B42A0]" />
@@ -83,7 +83,7 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* Verification Pillars Grid */}
-      <section className="space-y-6">
+      <section className="space-y-5">
         <div>
           <h2 className="text-xl font-bold text-slate-900">
             The GCCI 4-Pillar Verification Standard
@@ -93,7 +93,7 @@ export const AboutPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {[
             {
               title: '1. Legal Incorporation',
@@ -128,7 +128,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* FAQ Accordion */}
-      <section className="space-y-6">
+      <section className="space-y-5">
         <div>
           <h2 className="text-xl font-bold text-slate-900">Frequently Asked Questions</h2>
           <p className="text-xs text-slate-500 mt-1">Common inquiries from Gambian enterprises, procurement buyers, and investors.</p>
@@ -158,13 +158,13 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Secretariats and Regional Contact Information */}
-      <section className="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 space-y-8">
+      <section className="bg-slate-900 text-white rounded-xl p-6 sm:p-8 space-y-5">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold">GCCI Secretariat & Regional Hubs</h2>
           <p className="text-xs text-slate-400 mt-1">Our offices across The Gambia are available to assist with onboarding and verification.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-300">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-300">
           <div className="p-4 bg-slate-800/80 rounded-xl border border-slate-700 space-y-2">
             <h3 className="font-bold text-sm text-white">GCCI Headquarters (Kerr Jula)</h3>
             <p className="text-slate-400">Bertil Harding Highway, Bijilo / Kanifing</p>

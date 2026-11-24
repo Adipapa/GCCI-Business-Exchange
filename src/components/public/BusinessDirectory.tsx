@@ -130,9 +130,9 @@ export const BusinessDirectory: React.FC<BusinessDirectoryProps> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="gcci-public-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 space-y-6">
       {/* Directory Page Header */}
-      <div>
+      <div className="gcci-page-heading">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">
             Official Gambian Commercial Registry
@@ -147,7 +147,7 @@ export const BusinessDirectory: React.FC<BusinessDirectoryProps> = ({
       </div>
 
       {/* Filter and Search Bar Strip */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-4">
+      <div className="gcci-filter-panel bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
           {/* Keyword Search */}
           <div className="md:col-span-5 relative">
@@ -273,11 +273,11 @@ export const BusinessDirectory: React.FC<BusinessDirectoryProps> = ({
       </div>
 
       {/* Directory Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredBusinesses.map(biz => (
           <div
             key={biz.id}
-            className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between"
+            className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 transition-colors flex flex-col justify-between"
           >
             {/* Business Facility / Operational Banner */}
             {biz.logo && (
@@ -397,7 +397,7 @@ export const BusinessDirectory: React.FC<BusinessDirectoryProps> = ({
 
       {/* FULL PUBLIC BUSINESS PROFILE MODAL (Section 7) */}
       {selectedBusiness && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="gcci-modal-overlay fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="relative bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-slate-200">
             <button
               onClick={() => setSelectedBusiness(null)}

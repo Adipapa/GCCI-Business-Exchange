@@ -38,3 +38,331 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+
+/* Homepage hero motion — subtle and disabled for reduced-motion preferences. */
+@keyframes gcci-hero-enter {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes gcci-hero-photo-enter {
+  from { opacity: 0; transform: translate3d(24px, 0, 0) scale(0.985); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes gcci-hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-enter {
+  animation: gcci-hero-enter 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-photo-enter {
+  animation: gcci-hero-photo-enter 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms both;
+}
+
+.hero-float {
+  animation: gcci-hero-float 5s ease-in-out 1s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-photo-enter,
+  .hero-float {
+    animation: none !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   GCCI Business Exchange — shared visual system
+   -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background: #f5f7fb;
+    color: #172033;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button, a, input, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 2px;
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]):focus,
+  select:focus,
+  textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+
+  ::selection {
+    background: rgba(37, 99, 235, 0.18);
+    color: #0b1f45;
+  }
+}
+
+.gcci-app {
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(219, 234, 254, 0.28), transparent 32rem),
+    #f5f7fb;
+}
+
+.gcci-main {
+  width: 100%;
+}
+
+.gcci-main > * {
+  animation: gcci-page-arrive 360ms ease-out both;
+}
+
+@keyframes gcci-page-arrive {
+  from { opacity: 0.82; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gcci-navbar {
+  box-shadow: 0 5px 22px -22px rgba(15, 23, 42, 0.45);
+}
+
+.gcci-public-page {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.gcci-page-heading {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid #dce7f7;
+  border-radius: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: linear-gradient(112deg, #ffffff 0%, #f5f9ff 65%, #eaf2ff 100%);
+  box-shadow: 0 14px 34px -30px rgba(15, 47, 103, 0.42);
+}
+
+.gcci-page-heading::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  width: 17rem;
+  height: 17rem;
+  right: -5rem;
+  top: -9rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0));
+  pointer-events: none;
+}
+
+.gcci-page-heading > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gcci-page-heading h1 {
+  max-width: 52rem;
+  font-size: clamp(1.75rem, 3.1vw, 2.45rem);
+  line-height: 1.13;
+  letter-spacing: -0.04em;
+  color: #101d35;
+}
+
+.gcci-page-heading p {
+  max-width: 48rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #52627a;
+}
+
+.gcci-page-heading > div:first-child span {
+  letter-spacing: 0.13em;
+}
+
+.gcci-filter-panel {
+  border-radius: 1.1rem;
+  box-shadow: 0 12px 30px -28px rgba(15, 23, 42, 0.5);
+}
+
+.gcci-public-page button[class*="rounded-xl"][class*="border"][class*="bg-white"] {
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.gcci-membership-heading {
+  padding: clamp(0.5rem, 2vw, 1.5rem) 1rem;
+}
+
+.gcci-membership-heading h1 {
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.gcci-about-heading {
+  border-radius: 1.25rem;
+  box-shadow: 0 15px 35px -32px rgba(15, 23, 42, 0.45);
+}
+
+.gcci-portal-page {
+  padding-top: clamp(1.25rem, 2.4vw, 2rem);
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+.gcci-portal-heading {
+  border-color: #dbe4f0;
+  border-radius: 1.15rem;
+  border-left: 4px solid #1d5ed2;
+  background: linear-gradient(112deg, #ffffff 0%, #fbfdff 100%);
+  box-shadow: 0 12px 30px -28px rgba(15, 23, 42, 0.45);
+}
+
+.gcci-admin-heading {
+  border-radius: 1.15rem;
+  background: linear-gradient(115deg, #071b3a 0%, #0b3476 100%);
+  box-shadow: 0 18px 40px -30px rgba(7, 27, 58, 0.75);
+}
+
+.gcci-portal-tabs {
+  position: relative;
+  gap: 0.25rem;
+  border: 1px solid #e0e7f0;
+  border-radius: 0.95rem;
+  background: #ffffff;
+  padding: 0.35rem;
+  box-shadow: 0 10px 28px -28px rgba(15, 23, 42, 0.5);
+  scrollbar-width: thin;
+}
+
+.gcci-portal-tabs button {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 0.65rem;
+  padding: 0.65rem 0.9rem;
+}
+
+.gcci-portal-tabs button[class*="border-emerald-800"],
+.gcci-portal-tabs button[class*="border-[#0B42A0]"] {
+  border-color: transparent;
+  background: #edf4ff;
+  color: #0b42a0;
+}
+
+.gcci-metric-card {
+  min-height: 7.15rem;
+  border-color: #e0e7f0;
+  border-radius: 0.95rem;
+  background: linear-gradient(145deg, #ffffff, #fbfdff);
+  box-shadow: 0 10px 26px -26px rgba(15, 23, 42, 0.55);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.gcci-metric-card:hover {
+  border-color: #c8d8ef;
+  box-shadow: 0 16px 30px -27px rgba(15, 47, 103, 0.42);
+  transform: translateY(-1px);
+}
+
+.gcci-dealroom {
+  border-color: #dbe4f0;
+  border-radius: 1.2rem;
+  box-shadow: 0 20px 50px -38px rgba(15, 23, 42, 0.55);
+}
+
+.gcci-footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.gcci-footer::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1d5ed2, #60a5fa, #f59e0b);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .gcci-public-page button[class*="rounded-xl"][class*="border"][class*="bg-white"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -25px rgba(15, 47, 103, 0.5);
+  }
+}
+
+@media (max-width: 640px) {
+  .gcci-page-heading {
+    border-radius: 1rem;
+  }
+
+  .gcci-portal-tabs button {
+    padding: 0.6rem 0.72rem;
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .gcci-main > *,
+  .gcci-public-page button,
+  .gcci-metric-card {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+
+.gcci-modal-overlay {
+  background: rgba(7, 19, 40, 0.68);
+  backdrop-filter: blur(9px);
+}
+
+.gcci-modal-overlay > div,
+.gcci-modal-panel {
+  border-color: #dce5f0;
+  border-radius: 1.25rem;
+  box-shadow: 0 28px 80px -34px rgba(2, 12, 30, 0.65);
+}
+
+.gcci-modal-panel {
+  animation: gcci-modal-in 180ms ease-out both;
+}
+
+@keyframes gcci-modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gcci-dealroom {
+  height: min(750px, 85vh);
+  min-height: min(560px, 68vh);
+}
+
+@media (max-width: 640px) {
+  .gcci-dealroom {
+    min-height: 500px;
+    max-height: 88vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gcci-modal-panel { animation: none !important; }
+}

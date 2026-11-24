@@ -110,9 +110,9 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="gcci-public-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Header (Role Model Image 2) */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
+      <div className="gcci-membership-heading text-center max-w-3xl mx-auto space-y-3">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
           Choose the tier that fits your ambition
         </h1>
@@ -122,7 +122,7 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
       </div>
 
       {/* Pricing Cards Grid (Role Model Image 2) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
         {membershipPlans.map(plan => {
           const cfg = tierConfig[plan.id] || {
             title: plan.name,
@@ -217,7 +217,7 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
 
       {/* PAYMENT & SUBSCRIPTION MODAL */}
       {selectedPlan && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="gcci-modal-overlay fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="relative bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 text-xs">
             <button
               onClick={() => { setSelectedPlan(null); setPaymentSuccess(null); }}

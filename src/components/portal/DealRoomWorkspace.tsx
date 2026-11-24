@@ -114,7 +114,7 @@ export const DealRoomWorkspace: React.FC<DealRoomWorkspaceProps> = ({ dealRoomId
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[750px] max-h-[85vh]">
+    <div className="gcci-dealroom bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[750px] max-h-[85vh]">
       {/* Top Header */}
       <div className="p-4 sm:p-5 border-b border-slate-200 bg-slate-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
