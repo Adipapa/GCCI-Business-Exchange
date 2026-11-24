@@ -262,6 +262,17 @@ export const OpportunitiesList: React.FC<OpportunitiesListProps> = ({ onOpenDeal
         })}
       </div>
 
+      {filteredOpportunities.length === 0 && (
+        <div className="gcci-empty-state rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-12 text-center">
+          <Briefcase className="mx-auto h-10 w-10 text-slate-400" />
+          <h3 className="mt-3 text-base font-semibold text-slate-900">No open opportunities match your search</h3>
+          <p className="mx-auto mt-1 max-w-md text-sm leading-6 text-slate-500">There are no published opportunities matching these filters at the moment. Clear the filters or check again later.</p>
+          <button onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }} className="mt-4 rounded-lg bg-blue-50 px-4 py-2 text-sm font-semibold text-[#0B42A0] transition hover:bg-blue-100">
+            Clear opportunity filters
+          </button>
+        </div>
+      )}
+
       {/* TENDER DETAILS & SUBMISSION MODAL */}
       {selectedOpportunity && (
         <div className="gcci-modal-overlay fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
