@@ -289,6 +289,17 @@ export const Marketplace: React.FC<MarketplaceProps> = ({ onOpenDealRoom, openAu
         ))}
       </div>
 
+      {filteredProducts.length === 0 && (
+        <div className="gcci-empty-state rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-12 text-center">
+          <Package className="mx-auto h-10 w-10 text-slate-400" />
+          <h3 className="mt-3 text-base font-semibold text-slate-900">No matching marketplace listings</h3>
+          <p className="mx-auto mt-1 max-w-md text-sm leading-6 text-slate-500">Try a different keyword or clear your product, service and export filters.</p>
+          <button onClick={() => { setSearchTerm(''); setTypeFilter('all'); setCategoryFilter('all'); setExportOnly(false); }} className="mt-4 rounded-lg bg-blue-50 px-4 py-2 text-sm font-semibold text-[#0B42A0] transition hover:bg-blue-100">
+            Clear marketplace filters
+          </button>
+        </div>
+      )}
+
       {/* PRODUCT DETAILS & QUOTATION MODAL */}
       {selectedProduct && (
         <div className="gcci-modal-overlay fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
