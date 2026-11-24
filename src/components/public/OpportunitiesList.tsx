@@ -109,9 +109,9 @@ export const OpportunitiesList: React.FC<OpportunitiesListProps> = ({ onOpenDeal
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 space-y-6">
+    <div className="gcci-public-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 space-y-6">
       {/* Header */}
-      <div>
+      <div className="gcci-page-heading">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">
             Public Procurement & Sourcing Gateway
@@ -126,7 +126,7 @@ export const OpportunitiesList: React.FC<OpportunitiesListProps> = ({ onOpenDeal
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-4">
+      <div className="gcci-filter-panel bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
           <div className="md:col-span-8 relative">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
