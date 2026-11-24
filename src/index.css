@@ -410,3 +410,39 @@ button:disabled {
   cursor: not-allowed;
   opacity: 0.58;
 }
+
+
+.gcci-home-stat {
+  position: relative;
+  padding: 0.35rem 1.5rem 0.35rem 1rem;
+}
+
+.gcci-home-stat:first-child {
+  padding-left: 0;
+}
+
+.gcci-home-stat:not(:last-child)::after {
+  position: absolute;
+  content: "";
+  top: 0.25rem;
+  bottom: 0.25rem;
+  right: 0;
+  width: 1px;
+  background: #dbe4f0;
+}
+
+.gcci-home-stat p:first-child {
+  font-size: clamp(1.65rem, 2.5vw, 2rem);
+  letter-spacing: -0.045em;
+  color: #0b2d63;
+}
+
+@media (max-width: 640px) {
+  .gcci-home-stat {
+    padding: 0.2rem 0;
+  }
+
+  .gcci-home-stat:not(:last-child)::after {
+    display: none;
+  }
+}
