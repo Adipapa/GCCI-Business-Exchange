@@ -446,3 +446,35 @@ button:disabled {
     display: none;
   }
 }
+
+
+.gcci-empty-state {
+  margin-top: 1rem;
+  box-shadow: 0 14px 34px -32px rgba(15, 35, 70, 0.55);
+}
+
+.gcci-public-page input:not([type="checkbox"]):not([type="radio"]),
+.gcci-public-page select,
+.gcci-public-page textarea,
+.gcci-modal-panel input:not([type="checkbox"]):not([type="radio"]),
+.gcci-modal-panel select,
+.gcci-modal-panel textarea {
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+}
+
+.gcci-public-page textarea,
+.gcci-modal-panel textarea {
+  min-height: 6rem;
+}
+
+.gcci-public-page label,
+.gcci-modal-panel label {
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .gcci-empty-state {
+    padding: 2.25rem 1.25rem;
+  }
+}
