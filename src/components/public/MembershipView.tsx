@@ -217,7 +217,7 @@ export const MembershipView: React.FC<MembershipViewProps> = ({ openAuthModal, s
 
       {/* PAYMENT & SUBSCRIPTION MODAL */}
       {selectedPlan && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div className="gcci-modal-overlay fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="relative bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 text-xs">
             <button
               onClick={() => { setSelectedPlan(null); setPaymentSuccess(null); }}
