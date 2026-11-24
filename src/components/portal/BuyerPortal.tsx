@@ -125,9 +125,9 @@ export const BuyerPortal: React.FC<BuyerPortalProps> = ({ setActiveTab }) => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-5">
+    <div className="gcci-portal-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-5">
       {/* Buyer Header */}
-      <div className="bg-white p-5 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="gcci-portal-heading bg-white p-5 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">
@@ -154,7 +154,7 @@ export const BuyerPortal: React.FC<BuyerPortalProps> = ({ setActiveTab }) => {
       </div>
 
       {/* Sub tabs */}
-      <div className="flex border-b border-slate-200 px-1 text-xs font-medium text-slate-600 overflow-x-auto">
+      <div className="gcci-portal-tabs flex border-b border-slate-200 px-1 text-xs font-medium text-slate-600 overflow-x-auto">
         {[
           { id: 'dashboard', label: 'Procurement Dashboard' },
           { id: 'my_rfps', label: `Published Tenders (${opportunities.length})` },
@@ -175,7 +175,7 @@ export const BuyerPortal: React.FC<BuyerPortalProps> = ({ setActiveTab }) => {
       {activeSubTab === 'dashboard' && (
         <div className="space-y-6">
           <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
-            <div className="p-4 bg-white rounded-lg border border-slate-200">
+            <div className="gcci-metric-card p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block">Published RFPs</span>
               <p className="text-2xl font-bold text-slate-900 font-mono-numbers mt-1">
                 {opportunities.length} <span className="text-xs font-normal text-slate-500">Tenders</span>
@@ -183,7 +183,7 @@ export const BuyerPortal: React.FC<BuyerPortalProps> = ({ setActiveTab }) => {
               <span className="text-[11px] text-emerald-700 mt-1 block">Active on Exchange</span>
             </div>
 
-            <div className="p-4 bg-white rounded-lg border border-slate-200">
+            <div className="gcci-metric-card p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block">Supplier Quotes</span>
               <p className="text-2xl font-bold text-slate-900 font-mono-numbers mt-1">
                 {responses.length} <span className="text-xs font-normal text-slate-500">Bids</span>
@@ -191,7 +191,7 @@ export const BuyerPortal: React.FC<BuyerPortalProps> = ({ setActiveTab }) => {
               <span className="text-[11px] text-slate-500 mt-1 block">Awaiting review</span>
             </div>
 
-            <div className="p-4 bg-white rounded-lg border border-slate-200">
+            <div className="gcci-metric-card p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block">Shortlisted Bidders</span>
               <p className="text-2xl font-bold text-emerald-800 font-mono-numbers mt-1">
                 {responses.filter(r => r.status === 'shortlisted' || r.status === 'negotiating').length}
@@ -199,7 +199,7 @@ export const BuyerPortal: React.FC<BuyerPortalProps> = ({ setActiveTab }) => {
               <span className="text-[11px] text-slate-500 mt-1 block">In commercial discussion</span>
             </div>
 
-            <div className="p-4 bg-white rounded-lg border border-slate-200">
+            <div className="gcci-metric-card p-4 bg-white rounded-lg border border-slate-200">
               <span className="text-xs text-slate-400 block">Procurement Value</span>
               <p className="text-2xl font-bold text-emerald-800 font-mono-numbers mt-1">
                 D{(opportunities.reduce((acc, o) => acc + (o.budgetMax || 0), 0) / 1000000).toFixed(1)}M
